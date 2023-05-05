@@ -63,7 +63,7 @@ UINT32* FindExportEntry(VOID* module, const CASE_SENSITIVE CHAR8* routine_name)
                 if (forwarder_rva_string[dll_name_length + 1] == '#')
                     return FindExportEntryByOrdinal(GetLoadedModuleBase(buffer), (UINT16)ascii_to_int(&forwarder_rva_string[dll_name_length + 2]));
                 else
-                    return FindExportEntry(GetLoadedModuleBase(buffer), &forwarder_rva_string[dll_name_length + 2]);
+                    return FindExportEntry(GetLoadedModuleBase(buffer), forwarder_rva_string + dll_name_length + 1);
             }
         }
     }
@@ -102,7 +102,7 @@ UINT32* FindExportEntryByOrdinal(VOID* module, UINT16 ordinal)
         if (forwarder_rva_string[dll_name_length + 1] == '#')
             return FindExportEntryByOrdinal(GetLoadedModuleBase(buffer), (UINT16)ascii_to_int(&forwarder_rva_string[dll_name_length + 2]));
         else
-            return FindExportEntry(GetLoadedModuleBase(buffer), &forwarder_rva_string[dll_name_length + 2]);
+            return FindExportEntry(GetLoadedModuleBase(buffer), forwarder_rva_string + dll_name_length + 1);
     }
 }
 
