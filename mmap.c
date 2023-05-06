@@ -171,6 +171,9 @@ NTSTATUS ManualMapArray(BYTE* bytes, UINT64 size)
 		if (sec_hdr->Characteristics & 0x02000000)
 			Set_Memory(AllocationBase + sec_hdr->VirtualAddress, sec_hdr->SizeOfRawData, 0x00);
 
+	if (!nt->OptionalHeader.AddressOfEntryPoint)
+		return STATUS_SUCCESS;
+
 	// Call DriverEntry
 	NTSTATUS(*DriverEntry)(DEVICE_OBJECT * DeviceObject, PUNICODE_STRING RegistryPath) = 
 		(NTSTATUS(*)(DEVICE_OBJECT *, PUNICODE_STRING))(AllocationBase + nt->OptionalHeader.AddressOfEntryPoint);
