@@ -1,5 +1,5 @@
 # xigmapper
-xigmapper (xeroxz is gay mapper) is a driver manual mapper that loads your driver before Vanguard, but after critical system infrastructure has been set up, allowing you to write your bypass without worrying about the intricacies of EFI or the boot process.
+xigmapper is a driver manual mapper that loads your driver before Vanguard, but after critical system infrastructure has been set up, allowing you to write your bypass without worrying about the intricacies of EFI or the boot process.
 
 # Limitations
 xigmapper requires sb off, or for you to manually load the driver's file digest into your tpm (which i don't know how to do). This means that you can only use it against Vanguard on Windows 10, because Windows 11 Vanguard requires sb on, unless you know how to spoof secure boot. 
